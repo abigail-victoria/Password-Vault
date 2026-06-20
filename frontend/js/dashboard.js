@@ -7,7 +7,7 @@ const token =
 if (!token) {
 
     window.location.href =
-        "index.html";
+        "login.html";
 
 }
 
@@ -331,6 +331,6 @@ function logout() {
     );
 
     window.location.href =
-        "index.html";
+        "login.html";
 
 }
