@@ -48,6 +48,12 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             max-width: 500px;
             width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass:hover{
+            transform: translateY(-6px);
+            box-shadow: 0 15px 55px rgba(0,0,0,0.12);
         }
 
         .icon{
@@ -58,11 +64,12 @@
         h1{
             font-weight: 700;
             color:#374151;
+            margin-top:10px;
         }
 
         p{
             color:#6b7280;
-            margin-bottom:25px;
+            margin-bottom:20px;
         }
 
         .btn-custom{
@@ -84,12 +91,17 @@
             color:white;
         }
 
+        .btn-custom:hover{
+            opacity:0.95;
+            transform: scale(1.02);
+            transition:0.2s;
+        }
+
         .footer{
             margin-top:20px;
             font-size:12px;
             color:#6b7280;
         }
-
     </style>
 
 </head>
@@ -105,20 +117,20 @@
         <h1>Secure Vault</h1>
 
         <p>
-            Your personal encrypted password manager with AES encryption,
-            JWT authentication and SQLite storage.
+            Your personal encrypted password manager with modern security,
+            clean UI, and full control over your credentials.
         </p>
 
-        <a href="frontend/login.html" class="btn btn-login btn-custom">
-            <i class="bi bi-box-arrow-in-right"></i> Login
+        <a href="./frontend/login.html" class="btn btn-login btn-custom">
+            Login Vault
         </a>
 
-        <a href="frontend/register.html" class="btn btn-register btn-custom">
-            <i class="bi bi-person-plus"></i> Create Account
+        <a href="./frontend/register.html" class="btn btn-register btn-custom">
+            Create Account
         </a>
 
         <div class="footer">
-            Built with Node.js • Express • SQLite • AES Encryption
+            Save your passwords • Dont lose it
         </div>
 
     </div>
