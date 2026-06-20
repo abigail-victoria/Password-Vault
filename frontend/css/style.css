@@ -1,0 +1,499 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(
+        135deg,
+        #ffd6e8,
+        #e0c3fc,
+        #c9e7ff,
+        #d8f3dc
+    );
+    background-size:400% 400%;
+    animation:gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+.auth-container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.glass-card{
+    background:rgba(255,255,255,0.45);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    border-radius:28px;
+
+    padding:30px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.08);
+
+    color:#374151;
+}
+
+.auth-container .glass-card{
+    width:430px;
+}
+
+h1,h2,h3,h4,h5{
+    font-weight:600;
+    color:#374151;
+}
+
+.form-label{
+    color:#4b5563;
+    font-weight:500;
+}
+
+.form-control{
+
+    background:rgba(
+        255,
+        255,
+        255,
+        0.7
+    ) !important;
+
+    border:none !important;
+
+    border-radius:16px !important;
+
+    padding:12px 16px !important;
+
+    color:#111827 !important;
+
+    font-size:15px;
+}
+
+.form-control:focus{
+
+    background:white !important;
+
+    color:#111827 !important;
+
+    box-shadow:
+        0 0 0 4px rgba(
+            168,
+            85,
+            247,
+            0.15
+        ) !important;
+}
+
+.form-control::placeholder{
+    color:#6b7280;
+}
+
+.btn{
+
+    border:none !important;
+
+    border-radius:16px !important;
+
+    font-weight:500;
+
+    padding:10px 18px;
+}
+
+.btn-primary{
+
+    background:
+    linear-gradient(
+        135deg,
+        #a855f7,
+        #ec4899
+    ) !important;
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-2px);
+
+    transition:0.3s;
+}
+
+.btn-success{
+
+    background:
+    linear-gradient(
+        135deg,
+        #22c55e,
+        #06b6d4
+    ) !important;
+}
+
+.btn-danger{
+
+    background:
+    linear-gradient(
+        135deg,
+        #ef4444,
+        #f97316
+    ) !important;
+}
+
+.btn-outline-light{
+
+    border:none !important;
+
+    background:white !important;
+
+    color:#6d28d9 !important;
+}
+
+.navbar{
+
+    background:
+    rgba(
+        255,
+        255,
+        255,
+        0.3
+    ) !important;
+
+    backdrop-filter:blur(15px);
+
+    border-bottom:
+    1px solid rgba(
+        255,
+        255,
+        255,
+        0.25
+    );
+}
+
+.navbar-brand{
+    color:#374151 !important;
+    font-weight:700;
+}
+
+.table{
+
+    color:#374151 !important;
+}
+
+.table th{
+
+    border:none;
+
+    color:#4b5563;
+
+    font-weight:600;
+}
+
+.table td{
+
+    vertical-align:middle;
+
+    border-color:
+    rgba(
+        0,
+        0,
+        0,
+        0.05
+    );
+}
+
+.password-field{
+
+    background:white !important;
+
+    color:#111827 !important;
+
+    font-weight:500;
+
+    letter-spacing:1px;
+}
+
+.password-field:focus{
+
+    color:#111827 !important;
+}
+
+.input-group .btn{
+
+    border-radius:0 16px 16px 0 !important;
+}
+
+a{
+
+    color:#9333ea;
+
+    text-decoration:none;
+
+    font-weight:500;
+}
+
+a:hover{
+
+    color:#7e22ce;
+}
+
+.text-muted{
+    color:#6b7280 !important;
+}
+
+.search-box{
+
+    max-width:300px;
+}
+
+.dashboard-title{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:#374151;
+}
+
+.dashboard-subtitle{
+
+    color:#6b7280;
+}
+
+.stat-card{
+
+    background:
+    rgba(
+        255,
+        255,
+        255,
+        0.55
+    );
+
+    border-radius:22px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:
+    0 5px 20px rgba(
+        0,
+        0,
+        0,
+        0.05
+    );
+}
+
+.stat-card h3{
+
+    margin:0;
+
+    color:#7c3aed;
+}
+
+.stat-card p{
+
+    margin-top:8px;
+
+    color:#6b7280;
+}
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#c084fc;
+    border-radius:20px;
+}
+
+@media(max-width:768px){
+
+    .glass-card{
+        padding:20px;
+    }
+
+    .auth-container .glass-card{
+        width:100%;
+    }
+
+    .dashboard-title{
+        font-size:1.5rem;
+    }
+}
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+/* Tablets */
+
+@media (max-width: 992px){
+
+    .container{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .glass-card{
+        padding:24px;
+    }
+
+    .dashboard-title{
+        font-size:1.8rem;
+    }
+}
+
+
+/* Mobile Devices */
+
+@media (max-width: 768px){
+
+    .auth-container{
+        padding:20px;
+    }
+
+    .auth-container .glass-card{
+        width:100%;
+        max-width:450px;
+    }
+
+    .glass-card{
+        padding:20px;
+        border-radius:20px;
+    }
+
+    .dashboard-title{
+        font-size:1.5rem;
+        text-align:center;
+    }
+
+    .dashboard-subtitle{
+        text-align:center;
+    }
+
+    .navbar .container{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .navbar-brand{
+        text-align:center;
+    }
+
+    /* Add Password Form */
+
+    .row.g-3 > div{
+        width:100%;
+    }
+
+    .row.g-3 .btn{
+        width:100%;
+    }
+
+    /* Search Box */
+
+    .search-box,
+    #search{
+        width:100% !important;
+        max-width:100% !important;
+        margin-top:15px;
+    }
+
+    /* Table */
+
+    .table-responsive{
+        overflow-x:auto;
+    }
+
+    .table{
+        min-width:700px;
+    }
+
+}
+
+
+/* Small Phones */
+
+@media (max-width: 576px){
+
+    body{
+        font-size:14px;
+    }
+
+    .glass-card{
+        padding:16px;
+    }
+
+    .auth-container .glass-card{
+        width:100%;
+    }
+
+    h1{
+        font-size:1.8rem;
+    }
+
+    h2{
+        font-size:1.5rem;
+    }
+
+    h3{
+        font-size:1.3rem;
+    }
+
+    .btn{
+        padding:10px 14px;
+        font-size:14px;
+    }
+
+    .form-control{
+        font-size:14px;
+        padding:10px 14px !important;
+    }
+
+}
+
+
+/* Extra Small Phones */
+
+@media (max-width: 400px){
+
+    .glass-card{
+        padding:14px;
+        border-radius:16px;
+    }
+
+    .navbar-brand{
+        font-size:16px;
+    }
+
+    .dashboard-title{
+        font-size:1.2rem;
+    }
+
+}
