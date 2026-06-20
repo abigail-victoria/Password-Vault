@@ -53,7 +53,7 @@ if (registerForm) {
                     );
 
                     window.location.href =
-                        "login.html";
+                        "index.html";
 
                 } else {
 
