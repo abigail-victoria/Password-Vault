@@ -8,133 +8,117 @@ const {
 
 // ADD PASSWORD
 
-exports.addPassword = (req, res) => {
+exports.addPassword = async (req, res) => {
 
-    const {
-        app_name,
-        username,
-        password
-    } = req.body;
+    try {
 
-    const encryptedPassword =
-        encryptPassword(password);
-
-    db.run(
-        `
-        INSERT INTO passwords
-        (
-            user_id,
+        const {
             app_name,
             username,
             password
-        )
-        VALUES (?,?,?,?)
-        `,
-        [
-            req.user.id,
-            app_name,
-            username,
-            encryptedPassword
-        ],
-        function (err) {
+        } = req.body;
 
-            if (err) {
+        const encryptedPassword =
+            encryptPassword(password);
 
-                return res.status(500).json({
-                    message: err.message
-                });
+        await db.query(
+            `
+            INSERT INTO passwords
+            (
+                user_id,
+                app_name,
+                username,
+                password
+            )
+            VALUES ($1,$2,$3,$4)
+            `,
+            [
+                req.user.id,
+                app_name,
+                username,
+                encryptedPassword
+            ]
+        );
 
-            }
+        res.status(201).json({
+            message: "Password Saved"
+        });
 
-            res.status(201).json({
-                message: "Password Saved"
-            });
+    } catch (error) {
 
-        }
-    );
+        res.status(500).json({
+            message: error.message
+        });
+
+    }
 
 };
 
 
 // GET PASSWORDS
 
-exports.getPasswords = (req, res) => {
+exports.getPasswords = async (req, res) => {
 
-    db.all(
-        `
-        SELECT *
-        FROM passwords
-        WHERE user_id = ?
-        ORDER BY id DESC
-        `,
-        [req.user.id],
-        (err, rows) => {
+    try {
 
-            if (err) {
+        const result = await db.query(
+            `
+            SELECT *
+            FROM passwords
+            WHERE user_id = $1
+            ORDER BY id DESC
+            `,
+            [req.user.id]
+        );
 
-                return res.status(500).json({
-                    message: err.message
-                });
+        const passwords = result.rows.map(item => ({
+            id: item.id,
+            app_name: item.app_name,
+            username: item.username,
+            password: decryptPassword(item.password)
+        }));
 
-            }
+        res.json(passwords);
 
-            const passwords =
-                rows.map(item => ({
+    } catch (error) {
 
-                    id: item.id,
+        res.status(500).json({
+            message: error.message
+        });
 
-                    app_name:
-                        item.app_name,
-
-                    username:
-                        item.username,
-
-                    password:
-                        decryptPassword(
-                            item.password
-                        )
-
-                }));
-
-            res.json(passwords);
-
-        }
-    );
+    }
 
 };
 
 
 // DELETE PASSWORD
 
-exports.deletePassword = (req, res) => {
+exports.deletePassword = async (req, res) => {
 
-    const id = req.params.id;
+    try {
 
-    db.run(
-        `
-        DELETE FROM passwords
-        WHERE id = ?
-        AND user_id = ?
-        `,
-        [
-            id,
-            req.user.id
-        ],
-        function (err) {
+        await db.query(
+            `
+            DELETE FROM passwords
+            WHERE id = $1
+            AND user_id = $2
+            `,
+            [
+                req.params.id,
+                req.user.id
+            ]
+        );
 
-            if (err) {
+        res.json({
+            message: "Deleted Successfully"
+        });
 
-                return res.status(500).json({
-                    message: err.message
-                });
+    } catch (error) {
 
-            }
+        res.status(500).json({
+            message: error.message
+        });
 
-            res.json({
-                message: "Deleted Successfully"
-            });
-
-        }
-    );
+    }
 
 };
